@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    db:
+        image: postgis/postgis:13-3.1-alpine
+        restart: always
+        ports:
+        - "5432:5432"
+        volumes:
+            - memedrop-db:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: memedrop
+            POSTGRES_DB: memedrop
+    app:
+        build: .
+        restart: always
+        ports:
+        - "3000:3000"
+        depends_on:
+        - "db"
+
+volumes:
+    memedrop-db: {}
