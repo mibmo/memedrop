@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+        <title>{% block title %}{% endblock title %}</title>
+        {% block head %}{% endblock head %}
+    </head>
+    <body>
+        <div id="js-reminder">
+            Javascript needs to be enabled for this content to be shown.
+        </div>
+        <div id="content" class="hidden">
+            {% block content %}{% endblock content %}
+        </div>
+
+        <script>
+            document.getElementById("js-reminder").classList.add("hidden");
+            document.getElementById("content").classList.remove("hidden");
+        </script>
+    </body>
+</html>
+
+{# vim:set ft=html: #}

@@ -1,0 +1,3 @@
+[print_schema]
+file = "src/schema.rs"
+import_types = ["diesel::sql_types::*", "diesel_geometry::sql_types::*"]
