@@ -9,7 +9,6 @@ openssl = "*"
 rocket = "0.4.7"
 diesel = { version = "1.4.5", features = ["postgres"] }
 diesel_geometry = { version = "1.4.0", features = ["postgres"] }
-anyhow = "1.0.38"
 nanoid = "0.3.0"
 
 [dependencies.rocket_contrib]
