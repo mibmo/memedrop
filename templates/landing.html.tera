@@ -2,64 +2,150 @@
 {% block title %}Memedrop{% endblock title %}
 {% block content %}
 
-<div class="flex flex-col h-screen w-screen bg-gray-300">
+<div class="flex flex-col w-screen h-screen bg-gray-300 transform-gpu">
   <!-- Buttons -->
-  <div class="flex flex-row justify-center w-full static space-x-4 z-10 p-4 font-medium">
-    <button class="flex flex-row px-4 py-2 w-m rounded-full shadow-md text-gray-800 bg-gray-200">
-      <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-      </svg>
-      <p>Settings</p>
-    </button>
-    <button class="flex flex-row px-4 py-2 rounded-full shadow-md text-gray-800 bg-gray-200">
-      <img class="h-6 mr-2" src="https://raw.githubusercontent.com/mibmo/memedrop/main/resources/sad-pepe.svg" alt="">
-      <p>Drops</p>
-    </button>
-    <button class="flex flex-row px-4 py-2 rounded-full shadow-md text-gray-800 bg-gray-200">
+  <div class="static z-10 flex flex-row justify-center w-full p-4 font-medium space-x-4">
+    <button onclick="toggleDrawer('drawer-achivements')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
       <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
       </svg> 
       <p>Achivements</p>
     </button>
-    <button class="flex flex-row px-4 py-2 rounded-full shadow-md text-gray-800 bg-gray-200">
+    <button onclick="toggleDrawer('drawer-drops')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+      <img class="h-6 mr-2" src="https://raw.githubusercontent.com/mibmo/memedrop/main/resources/sad-pepe.svg" alt="">
+      <p>Drops</p>
+    </button>
+    <button onclick="toggleDrawer('drawer-settings')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md w-m min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
       <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
       </svg>
-      <p>Share</p>
+      <p>Settings</p>
     </button>
   </div>
 
-  <!-- Settings -->
-  <div class="flex w-3/5 absolute px-6 py-4 z-10 shadow-md invisible bg-gray-200">
-    aaaaa
-  </div>
+  <div id="bg-darken" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
 
   <!-- Drops -->
-  <div class="flex w-3/5 absolute px-6 py-4 z-10 shadow-md invisible bg-gray-200">
-    bbbb
+  <div id="drawer-drops" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="toggleDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Drops</h1>
+    </div>
+    <div class="mt-4">
+        oui.
+    </div>
   </div>
 
   <!-- Achivements -->
-  <div class="flex w-3/5 absolute px-6 py-4 z-10 shadow-md visible bg-gray-200">
-    <p class="">Achivements</p>
+  <div id="drawer-achivements" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="toggleDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Achivements</h1>
+    </div>
+    <div class="mt-4">
+      <!-- Exploration -->
+      <h3 class="text-xl font-bold">Exploration</h3>
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Moonwalker</h3>
+            <sub class="text-base md:text-xs">Walk 19.69 km</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-4 text-xl font-bold">Drops</h3>
+      <div class="mt-4 grid grid-cols-2 gap-4">
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Memedrop</h3>
+            <sub class="text-base md:text-xs">Make your first Memedrop!</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+          </div>
+        </div>
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Dropper</h3>
+            <sub class="text-base md:text-xs">Drop 5 memes.</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Share -->
-  <div class="flex w-3/5 absolute px-6 py-4 z-10 shadow-md invisible bg-gray-200">
-    dd
+  <!-- Settings -->
+  <div id="drawer-settings" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="toggleDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Settings</h1>
+    </div>
+    <div class="mt-4">
+        oui.
+    </div>
   </div>
 
   <!--- Map --->
-  <div class="flex h-screen w-screen absolute px-6 py-4 z-0 shadow-md bg-gray-500">
+  <div class="absolute z-0 flex flex-col w-screen h-screen bg-gray-500 shadow-md">
 
     <pre>Position: <span id="coords">Unknown</span></pre>
-    <br>
     <pre id="drop-plain"></pre>
 
   </div>
 </div>
 
 <script>
+    let eDarken = document.getElementById("bg-darken");
+    let dAchivement = document.getElementById("bg-darken");
+    var activeDrawer = undefined;
+
+    function toggleDrawer(id) {
+        console.log("active drawer: ");
+        console.log(activeDrawer);
+
+        if (!id) {
+            eDarken.classList.add("invisible");
+            activeDrawer.classList.add("invisible")
+            return;
+        }
+
+        let darkened = eDarken.classList.contains("invisible");
+        let drawer = document.getElementById(id);
+        if (!activeDrawer) { activeDrawer = drawer };
+
+        console.log("drawer");
+        console.log(drawer);
+
+        if (drawer == activeDrawer) {
+            eDarken.classList.remove("invisible");
+            drawer.classList.remove("invisible");
+        } else if (activeDrawer) {
+            activeDrawer.classList.add("invisible");
+            drawer.classList.remove("invisible");
+        }
+
+        activeDrawer = drawer;
+    }
+
     function getClosestDrop() {
         navigator.geolocation.getCurrentPosition(async function(pos) {
             let coords = `(${pos.coords.latitude}, ${pos.coords.longitude})`;
