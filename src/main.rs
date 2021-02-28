@@ -9,7 +9,6 @@ use std::collections::HashMap;
 use rocket::request::{Form, FromForm};
 use rocket_contrib::templates::Template;
 
-use anyhow::{anyhow, bail};
 //use serde::Serialize;
 
 use memedrop::DropDb as DbConn;
