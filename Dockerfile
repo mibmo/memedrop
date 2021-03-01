@@ -18,9 +18,9 @@ FROM ${WEB_IMAGE} AS web-build
 RUN yarn global add postcss-cli
 COPY package.json yarn.lock postcss.config.js tailwind.config.js ./
 RUN yarn
-ADD resources ./resources
+ADD public/resources ./public/resources
 ADD templates ./templates
-RUN NODE_ENV=production postcss resources/styles.css -o resources/styles.css
+RUN NODE_ENV=production postcss public/resources/styles.css -o public/resources/styles.css
 
 FROM ${RUNNER_IMAGE}
 
@@ -33,7 +33,7 @@ COPY --from=web-build \
     /templates \
     ./templates
 COPY --from=web-build \
-    /resources \
-    ./resources
+    /public/resources \
+    ./public/resources
 
 ENTRYPOINT [ "/usr/local/bin/server" ] 
