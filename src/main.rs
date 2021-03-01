@@ -7,11 +7,9 @@ extern crate rocket;
 use std::collections::HashMap;
 
 use rocket::request::{Form, FromForm};
-use rocket_contrib::{templates::Template, serve::StaticFiles};
+use rocket_contrib::{json::Json, serve::StaticFiles, templates::Template};
 
-//use serde::Serialize;
-
-use memedrop::DropDb as DbConn;
+use memedrop::{models::MemeDrop, DropDb as DbConn};
 
 #[derive(FromForm)]
 struct AddDropForm {
@@ -48,12 +46,12 @@ fn add_drop_with_coordinates(conn: DbConn, data: Form<AddDropForm>) -> String {
 }
 
 #[get("/near?<lat>&<long>")]
-fn closest_drop(conn: DbConn, lat: f64, long: f64) -> String {
+fn closest_drop(conn: DbConn, lat: f64, long: f64) -> Result<Json<MemeDrop>, String> {
     match conn.get_closest_drop(lat, long) {
-        Err(err) => format!("An error occured: {:?}", err),
+        Err(err) => Err(format!("An error occured: {:?}", err)),
         Ok(drop) => match drop {
-            None => "No drops were found.".to_string(),
-            Some((drop, distance)) => format!("{:?}\nDistance: {}", drop, distance),
+            None => Err("No drops were found.".to_string()),
+            Some((drop, _)) => Ok(Json(drop)),
         },
     }
 }
