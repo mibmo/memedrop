@@ -120,60 +120,15 @@
       <h1 class="w-full text-2xl font-bold">Settings</h1>
     </div>
     <div class="mt-4">
-        <h3>The settings tab is not fully functional as of now.</h3>
+      <h3>The settings tab is not fully functional as of now.</h3>
     </div>
   </div>
 
   <!--- Map --->
-  <div class="absolute z-0 flex flex-col w-screen h-screen bg-gray-500 shadow-md">
-
-    <pre>Position: <span id="coords">Unknown</span></pre>
-    <pre id="drop-plain"></pre>
-
+  <div class="absolute z-0 w-screen h-screen">
+    <div id="map" class="w-full h-full"></div>
   </div>
 </div>
-
-<script>
-    let eDarkened = document.getElementById("bg-darken");
-
-    let dAchivements = document.getElementById("drawer-achivements");
-    let dDrops = document.getElementById("drawer-drops");
-    let dSettings = document.getElementById("drawer-settings");
-    let drawers = [dAchivements, dDrops, dSettings];
-
-    var activeDrawer = undefined;
-
-    function closeDrawer() {
-        eDarkened.classList.add("invisible");
-        for (var drawer in drawers) {
-            drawers[drawer].classList.add("invisible");
-        }
-    }
-
-    function openDrawer(id) {
-        let drawer = document.getElementById(id);
-
-        eDarkened.classList.remove("invisible");
-        drawer.classList.remove("invisible");
-    }
-
-    function getClosestDrop() {
-        navigator.geolocation.getCurrentPosition(async function(pos) {
-            let coords = `(${pos.coords.latitude}, ${pos.coords.longitude})`;
-            document.getElementById("coords").innerHTML = coords;
-
-            let response = await fetch(`/near?lat=${pos.coords.latitude}&long=${pos.coords.longitude}`);
-
-            if (response.ok) {
-                let body = await response.text();
-                document.getElementById("drop-plain").innerHTML = body;
-            } else {
-                alert("HTTP-Error: " + response.status);
-            }
-        })
-    }
-
-    getClosestDrop();
-</script>
+<script src="res/code.js"></script>
 {% endblock content %}
 {# vim:set ft=html ts=2 sw=2: #}
