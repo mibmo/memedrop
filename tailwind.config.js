@@ -4,7 +4,7 @@ module.exports = {
   purge: [
       'templates/**/*.html.tera',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     extend: {
         colors: {
