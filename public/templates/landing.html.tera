@@ -95,7 +95,7 @@
       <h1 class="w-full text-2xl font-bold">Drops</h1>
     </div>
     <div class="mt-4">
-        oui.
+        <h3>Viewing drops has not been implemented yet.</h3>
     </div>
   </div>
 
@@ -111,7 +111,7 @@
       <h1 class="w-full text-2xl font-bold">Settings</h1>
     </div>
     <div class="mt-4">
-        oui.
+        <h3>The settings tab is not fully functional as of now.</h3>
     </div>
   </div>
 
