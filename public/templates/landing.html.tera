@@ -41,8 +41,18 @@
       <div class="mt-4 grid grid-cols-2 md:grid-cols-2 gap-4">
         <div class="bg-gray-300 shadow-md rounded-md">
           <div class="p-2">
+            <h3 class="text-xl md:text-lg">Good start</h3>
+            <sub class="text-base md:text-xs">Walk your first kilometer</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 100%"><p class="ml-2">100%</p></div>
+          </div>
+        </div>
+
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
             <h3 class="text-xl md:text-lg">Moonwalker</h3>
-            <sub class="text-base md:text-xs">Walk 19.69 km</sub>
+            <sub class="text-base md:text-xs">Walk 19.69 kilometers</sub>
           </div>
           <div class="w-full border-t-2 border-gray-400 rounded-b-md">
             <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
@@ -58,16 +68,16 @@
             <sub class="text-base md:text-xs">Make your first Memedrop!</sub>
           </div>
           <div class="w-full border-t-2 border-gray-400 rounded-b-md">
-            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 100%"><p class="ml-2">100%</p></div>
           </div>
         </div>
         <div class="bg-gray-300 shadow-md rounded-md">
           <div class="p-2">
             <h3 class="text-xl md:text-lg">Dropper</h3>
-            <sub class="text-base md:text-xs">Drop 5 memes.</sub>
+            <sub class="text-base md:text-xs">Drop 5 memes</sub>
           </div>
           <div class="w-full border-t-2 border-gray-400 rounded-b-md">
-            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 40%"><p class="ml-2">40%</p></div>
           </div>
         </div>
       </div>
