@@ -25,21 +25,6 @@
 
   <div id="bg-darken" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
 
-  <!-- Drops -->
-  <div id="drawer-drops" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
-    <div class="flex flex-row items-center space-x-4">
-      <button onclick="toggleDrawer()">
-        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <h1 class="w-full text-2xl font-bold">Drops</h1>
-    </div>
-    <div class="mt-4">
-        oui.
-    </div>
-  </div>
-
   <!-- Achivements -->
   <div id="drawer-achivements" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
     <div class="flex flex-row items-center space-x-4">
@@ -88,6 +73,22 @@
       </div>
     </div>
   </div>
+
+  <!-- Drops -->
+  <div id="drawer-drops" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="toggleDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Drops</h1>
+    </div>
+    <div class="mt-4">
+        oui.
+    </div>
+  </div>
+
 
   <!-- Settings -->
   <div id="drawer-settings" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
