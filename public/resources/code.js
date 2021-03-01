@@ -19,7 +19,6 @@ function openDrawer(id) {
   drawer.classList.remove("invisible");
 }
 
-/*
 function getCurrentLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(async function(pos) {
@@ -31,15 +30,30 @@ function getCurrentLocation() {
   });
 }
 
-function getClosestDrop(lat, lon) {
-  return new Promise((resolve, reject) => {
-    let response = await fetch(`/near?lat=${lat}&long=${lon}`);
+function getClosestDrop(lat, long) {
+    return new Promise((resolve, reject) => {
+        var request = new XMLHttpRequest();
 
-    if (response.ok) {
-      resolve(await response.text());
-    } else {
-      reject(response.status);
-    }
-  });
+        request.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    resolve(this.responseText);
+                } else {
+                    reject(this.status);
+                }
+            }
+        };
+        request.open("GET", `/near?lat=${lat}&long=${long}`, true);
+        request.send();
+    });
 }
-*/
+
+getCurrentLocation()
+    .then(pos => {
+        return getClosestDrop(pos.lat, pos.long).then(drop => {
+            return { "pos": pos, "drop": drop };
+        });
+    }).then(({pos, drop}) => {
+        console.log(pos);
+        console.log(drop);
+    });
