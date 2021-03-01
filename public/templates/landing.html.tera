@@ -5,17 +5,17 @@
 <div class="flex flex-col w-screen h-screen bg-gray-300 transform-gpu">
   <!-- Buttons -->
   <div class="static z-10 flex flex-row justify-center w-full p-4 font-medium space-x-4">
-    <button onclick="toggleDrawer('drawer-achivements')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+    <button onclick="openDrawer('drawer-achivements')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
       <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
       </svg> 
       <p>Achivements</p>
     </button>
-    <button onclick="toggleDrawer('drawer-drops')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+    <button onclick="openDrawer('drawer-drops')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
       <img class="h-6 mr-2" src="res/sad-pepe.svg" alt="">
       <p>Drops</p>
     </button>
-    <button onclick="toggleDrawer('drawer-settings')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md w-m min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+    <button onclick="openDrawer('drawer-settings')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md w-m min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
       <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
       </svg>
@@ -23,12 +23,12 @@
     </button>
   </div>
 
-  <div id="bg-darken" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
+  <div id="bg-darken" onclick="closeDrawer()" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
 
   <!-- Achivements -->
   <div id="drawer-achivements" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
     <div class="flex flex-row items-center space-x-4">
-      <button onclick="toggleDrawer()">
+      <button onclick="closeDrawer()">
         <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -77,7 +77,7 @@
   <!-- Drops -->
   <div id="drawer-drops" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
     <div class="flex flex-row items-center space-x-4">
-      <button onclick="toggleDrawer()">
+      <button onclick="closeDrawer()">
         <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -93,7 +93,7 @@
   <!-- Settings -->
   <div id="drawer-settings" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
     <div class="flex flex-row items-center space-x-4">
-      <button onclick="toggleDrawer()">
+      <button onclick="closeDrawer()">
         <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -115,36 +115,27 @@
 </div>
 
 <script>
-    let eDarken = document.getElementById("bg-darken");
-    let dAchivement = document.getElementById("bg-darken");
+    let eDarkened = document.getElementById("bg-darken");
+
+    let dAchivements = document.getElementById("drawer-achivements");
+    let dDrops = document.getElementById("drawer-drops");
+    let dSettings = document.getElementById("drawer-settings");
+    let drawers = [dAchivements, dDrops, dSettings];
+
     var activeDrawer = undefined;
 
-    function toggleDrawer(id) {
-        console.log("active drawer: ");
-        console.log(activeDrawer);
-
-        if (!id) {
-            eDarken.classList.add("invisible");
-            activeDrawer.classList.add("invisible")
-            return;
+    function closeDrawer() {
+        eDarkened.classList.add("invisible");
+        for (var drawer in drawers) {
+            drawers[drawer].classList.add("invisible");
         }
+    }
 
-        let darkened = eDarken.classList.contains("invisible");
+    function openDrawer(id) {
         let drawer = document.getElementById(id);
-        if (!activeDrawer) { activeDrawer = drawer };
 
-        console.log("drawer");
-        console.log(drawer);
-
-        if (drawer == activeDrawer) {
-            eDarken.classList.remove("invisible");
-            drawer.classList.remove("invisible");
-        } else if (activeDrawer) {
-            activeDrawer.classList.add("invisible");
-            drawer.classList.remove("invisible");
-        }
-
-        activeDrawer = drawer;
+        eDarkened.classList.remove("invisible");
+        drawer.classList.remove("invisible");
     }
 
     function getClosestDrop() {
