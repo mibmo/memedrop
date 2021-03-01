@@ -8,6 +8,8 @@ let dSettings = document.getElementById("drawer-settings");
 let drawers = [dAchivements, dDrops, dSettings];
 
 var lastPos = undefined;
+var map = undefined;
+var marker = undefined;
 
 function closeDrawer() {
   eDarkened.classList.add("invisible");
@@ -41,7 +43,7 @@ function getClosestDrop(lat, long) {
         request.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if (this.status == 200) {
-                    resolve(this.responseText);
+                    resolve(JSON.parse(this.responseText));
                 } else {
                     reject(this.status);
                 }
@@ -66,6 +68,23 @@ function updateUi() {
         }).then(({pos, drop}) => {
             console.log(pos);
             console.log(drop);
+
+            if (!marker) {
+                marker = L.marker([drop.location.lat, drop.location.long]).addTo(map);
+            }
+        });
+}
+
+function initialiseMap(id) {
+    getCurrentLocation()
+        .then(({lat, long}) => {
+            map = L.map(id).setView([lat, long], 13);
+            L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomain: ["a", "b", "c"]
+            }).addTo(map);
+
+            return map;
         });
 }
 
@@ -97,4 +116,5 @@ function Deg2Rad( deg ) {
    return deg * Math.PI / 180;
 }
 
+initialiseMap("map")
 setInterval(updateUi, 1000/uiRefreshRate);
