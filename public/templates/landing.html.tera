@@ -23,6 +23,15 @@
     </button>
   </div>
 
+  <!--- Add drop button --->
+  <div class="static z-10 flex flex-row items-end justify-end w-screen h-screen p-8">
+    <button class="flex items-center justify-center w-16 h-16 text-gray-800 bg-gray-200 rounded-full">
+      <svg class="h-14" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      </svg>
+    </button>
+  </div>
+
   <div id="bg-darken" onclick="closeDrawer()" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
 
   <!-- Achivements -->
