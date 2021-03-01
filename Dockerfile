@@ -18,8 +18,7 @@ FROM ${WEB_IMAGE} AS web-build
 RUN yarn global add postcss-cli
 COPY package.json yarn.lock postcss.config.js tailwind.config.js ./
 RUN yarn
-ADD public/resources ./public/resources
-ADD templates ./templates
+ADD public ./public
 RUN NODE_ENV=production postcss public/resources/styles.css -o public/resources/styles.css
 
 FROM ${RUNNER_IMAGE}
@@ -30,10 +29,7 @@ COPY --from=build \
     /home/rust/src/target/x86_64-unknown-linux-musl/release/server \
     /usr/local/bin/
 COPY --from=web-build \
-    /templates \
-    ./templates
-COPY --from=web-build \
-    /public/resources \
-    ./public/resources
+    /public \
+    ./public/
 
 ENTRYPOINT [ "/usr/local/bin/server" ] 

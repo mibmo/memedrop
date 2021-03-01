@@ -2,7 +2,8 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [
-      'templates/**/*.html.tera',
+      'public/**/*.html.tera',
+      'public/**/*.css',
   ],
   darkMode: 'class',
   theme: {
