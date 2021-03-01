@@ -167,4 +167,4 @@
     getClosestDrop();
 </script>
 {% endblock content %}
-{# vim:set ft=html: #}
+{# vim:set ft=html ts=2 sw=2: #}
