@@ -12,7 +12,7 @@
       <p>Achivements</p>
     </button>
     <button onclick="toggleDrawer('drawer-drops')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
-      <img class="h-6 mr-2" src="https://raw.githubusercontent.com/mibmo/memedrop/main/resources/sad-pepe.svg" alt="">
+      <img class="h-6 mr-2" src="res/sad-pepe.svg" alt="">
       <p>Drops</p>
     </button>
     <button onclick="toggleDrawer('drawer-settings')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md w-m min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
