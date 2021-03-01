@@ -34,7 +34,7 @@ impl DropDb {
 
     /// Given a coordinate, returns the closest of all drops along with the distance from the given
     /// point.
-    pub fn get_closest_drop(&self, lat: f64, long: f64) -> anyhow::Result<Option<(MemeDrop, f64)>> {
+    pub fn get_closest_drop(&self, lat: f64, long: f64) -> QueryResult<Option<(MemeDrop, f64)>> {
         let drops = self.get_all_drops()?;
 
         let point = PgPoint(lat, long);

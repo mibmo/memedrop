@@ -7,9 +7,8 @@ extern crate rocket;
 use std::collections::HashMap;
 
 use rocket::request::{Form, FromForm};
-use rocket_contrib::templates::Template;
+use rocket_contrib::{templates::Template, serve::StaticFiles};
 
-use anyhow::{anyhow, bail};
 //use serde::Serialize;
 
 use memedrop::DropDb as DbConn;
@@ -70,6 +69,7 @@ fn main() {
     let routes = routes![landing, show_all_drops, add_drop_with_coordinates, closest_drop];
 
     rocket::ignite()
+        .mount("/res", StaticFiles::from("/resources"))
         .mount("/", routes)
         .register(catchers)
         .attach(DbConn::fairing())
