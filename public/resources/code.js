@@ -67,9 +67,9 @@ function updateUi() {
             return getClosestDrop(pos.lat, pos.long).then(drop => {
                 return { "pos": pos, "drop": drop };
             });
-        }).then(({pos, drop}) => {
-            console.log(pos);
-            console.log(drop);
+        }).then(obj => {
+            let pos = obj.pos;
+            let drop = obj.drop;
 
             if (!marker) {
                 marker = L.marker([drop.location.lat, drop.location.long]).addTo(map);
@@ -77,10 +77,10 @@ function updateUi() {
         });
 }
 
-function initialiseMap(id) {
+function initialise() {
     getCurrentLocation()
         .then(({lat, long}) => {
-            map = L.map(id).setView([lat, long], zoomLevel);
+            map = L.map("map").setView([lat, long], zoomLevel);
             L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 subdomain: ["a", "b", "c"]
@@ -89,6 +89,8 @@ function initialiseMap(id) {
 
             return map;
         });
+
+    setInterval(updateUi, 1000/uiRefreshRate);
 }
 
 function haversine(pos, other) {
@@ -119,5 +121,4 @@ function Deg2Rad( deg ) {
    return deg * Math.PI / 180;
 }
 
-initialiseMap("map")
-setInterval(updateUi, 1000/uiRefreshRate);
+initialise()
