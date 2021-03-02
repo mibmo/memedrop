@@ -1,4 +1,5 @@
 let uiRefreshRate = 5;
+let zoomLevel = 20;
 
 let eDarkened = document.getElementById("bg-darken");
 
@@ -57,6 +58,7 @@ function getClosestDrop(lat, long) {
 function updateUi() {
     getCurrentLocation()
         .then(pos => {
+            map.setView([pos.lat, pos.long], zoomLevel);
             if (lastPos && haversine(pos, lastPos) < 10) {
                 return;
             }
@@ -78,11 +80,12 @@ function updateUi() {
 function initialiseMap(id) {
     getCurrentLocation()
         .then(({lat, long}) => {
-            map = L.map(id).setView([lat, long], 13);
+            map = L.map(id).setView([lat, long], zoomLevel);
             L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 subdomain: ["a", "b", "c"]
             }).addTo(map);
+            map.zoomControl.remove()
 
             return map;
         });
