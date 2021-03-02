@@ -135,6 +135,21 @@
   <div class="absolute z-0 w-screen h-screen">
     <div id="map" class="w-full h-full"></div>
   </div>
+
+  <!-- Banner ad -->
+  <div class="z-0 flex flex-row justify-between w-full h-16 bg-white">
+    <div class="pl-16 bg-black">
+      <svg class="w-16 h-full" viewBox="0 0 95 95">
+        <path d="M40 0L100 0V100" fill="#fff">
+      </svg>
+    </div>
+    <h1 class="self-center text-2xl font-light uppercase">Banner ad</h1>
+    <div class="pr-16 bg-black">
+      <svg class="w-16 h-full" viewBox="0 0 100 100">
+        <path d="M60 100L0 0V100" fill="#fff">
+      </svg>
+    </div>
+  </div>
 </div>
 <script src="res/code.js"></script>
 {% endblock content %}
