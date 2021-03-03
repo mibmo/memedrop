@@ -111,10 +111,9 @@
       <h1 class="w-full text-2xl font-bold">Drops</h1>
     </div>
     <div class="mt-4">
-      <h3>Viewing drops has not been implemented yet.</h3>
+      <h3>You haven't found any drops yet.</h3>
     </div>
   </div>
-
 
   <!-- Settings -->
   <div id="drawer-settings" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
