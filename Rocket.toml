@@ -3,7 +3,7 @@ address = "0.0.0.0"
 port = 3000
 
 [production]
-template_dir = "templates/"
+template_dir = "public/templates/"
 
 [development.databases]
 drop_db = { url = "postgres://postgres:memedrop@localhost/memedrop" }
