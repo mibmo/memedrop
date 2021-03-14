@@ -67,8 +67,8 @@ fn main() {
     let routes = routes![landing, show_all_drops, add_drop_with_coordinates, closest_drop];
 
     rocket::ignite()
-        .mount("/res", StaticFiles::from("/resources"))
         .mount("/", routes)
+        .mount("/res", StaticFiles::from("/public/resources"))
         .register(catchers)
         .attach(DbConn::fairing())
         .attach(Template::fairing())

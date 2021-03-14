@@ -1,0 +1,155 @@
+{% extends "base" %}
+{% block title %}Memedrop{% endblock title %}
+{% block head%}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+{% endblock head %}
+{% block content %}
+<div class="flex flex-col w-screen h-screen bg-gray-300 transform-gpu">
+  <!-- Buttons -->
+  <div class="static z-10 flex flex-row justify-center w-full p-4 font-medium space-x-4">
+    <button onclick="openDrawer('drawer-achivements')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+      <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      </svg> 
+      <p>Achivements</p>
+    </button>
+    <button onclick="openDrawer('drawer-drops')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+      <img class="h-6 mr-2" src="res/sad-pepe.svg" alt="">
+      <p>Drops</p>
+    </button>
+    <button onclick="openDrawer('drawer-settings')" class="flex flex-row px-4 py-2 text-gray-800 bg-gray-200 rounded-full shadow-md w-m min-w-max transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+      <svg class="h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+      </svg>
+      <p>Settings</p>
+    </button>
+  </div>
+
+  <!--- Add drop button --->
+  <div class="static z-10 flex flex-row items-end justify-end w-screen h-screen p-8">
+    <button class="flex items-center justify-center w-16 h-16 text-gray-800 bg-gray-200 rounded-full shadow-xl transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none">
+      <svg class="h-14" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="bg-darken" onclick="closeDrawer()" class="absolute z-10 invisible w-full h-full bg-black opacity-50 transition-opacity">aasdasdasd</div>
+
+  <!-- Achivements -->
+  <div id="drawer-achivements" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="closeDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Achivements</h1>
+    </div>
+    <div class="mt-4">
+
+      <h3 class="text-xl font-bold">Exploration</h3>
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-2 gap-4">
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Good start</h3>
+            <sub class="text-base md:text-xs">Walk your first kilometer</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 100%"><p class="ml-2">100%</p></div>
+          </div>
+        </div>
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Moonwalker</h3>
+            <sub class="text-base md:text-xs">Walk 19.69 kilometers</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 60%"><p class="ml-2">60%</p></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-4 text-xl font-bold">Drops</h3>
+      <div class="mt-4 grid grid-cols-2 gap-4">
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Memedrop</h3>
+            <sub class="text-base md:text-xs">Make your first Memedrop!</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 100%"><p class="ml-2">100%</p></div>
+          </div>
+        </div>
+        <div class="bg-gray-300 shadow-md rounded-md">
+          <div class="p-2">
+            <h3 class="text-xl md:text-lg">Dropper</h3>
+            <sub class="text-base md:text-xs">Drop 5 memes</sub>
+          </div>
+          <div class="w-full border-t-2 border-gray-400 rounded-b-md">
+            <div class="h-6 text-base md:h-4 rounded-b-md md:text-xs bg-gradient-to-br from-cyan-400 to-blue-400" style="width: 40%"><p class="ml-2">40%</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Drops -->
+  <div id="drawer-drops" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="closeDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Drops</h1>
+    </div>
+    <div class="mt-4">
+      <h3>You haven't found any drops yet.</h3>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div id="drawer-settings" class="absolute z-20 invisible w-full h-full px-6 py-4 bg-gray-200 shadow-xl md:w-3/5 xl:w-2/5 rounded-br-xl">
+    <div class="flex flex-row items-center space-x-4">
+      <button onclick="closeDrawer()">
+        <svg class="h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h1 class="w-full text-2xl font-bold">Settings</h1>
+    </div>
+    <div class="mt-4">
+      <h3>The settings tab is not fully functional as of now.</h3>
+    </div>
+  </div>
+
+  <!--- Map --->
+  <div class="absolute z-0 w-screen h-screen">
+    <div id="map" class="w-full h-full"></div>
+  </div>
+
+  <!-- Banner ad -->
+  <div class="z-0 flex flex-row justify-between w-full h-16 bg-white">
+    <div class="pl-16 bg-black">
+      <svg class="w-16 h-full" viewBox="0 0 95 95">
+        <path d="M40 0L100 0V100" fill="#fff">
+      </svg>
+    </div>
+    <h1 class="self-center text-2xl font-light uppercase">Banner ad</h1>
+    <div class="pr-16 bg-black">
+      <svg class="w-16 h-full" viewBox="0 0 100 100">
+        <path d="M60 100L0 0V100" fill="#fff">
+      </svg>
+    </div>
+  </div>
+</div>
+<script src="res/code.js"></script>
+{% endblock content %}
+{# vim:set ft=html ts=2 sw=2: #}

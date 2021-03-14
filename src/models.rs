@@ -41,9 +41,6 @@ impl MemeDrop {
     }
 }
 
-impl fmt::Debug for MemeDrop {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "ID: {id}\nLocation: ({lat}, {long})\nMimetype: {mimetype}\nContent: {content}", id = self.id, lat = self.location.0, long = self.location.1, mimetype = self.mimetype, content = self.content)
 impl Serialize for MemeDrop {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

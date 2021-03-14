@@ -1,10 +1,17 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   purge: [
-      'templates/**/*.html.tera',
+      'public/**/*.html.tera',
+      'public/**/*.css',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            cyan: colors.cyan,
+        }
+    },
   },
   variants: {
     extend: {},
